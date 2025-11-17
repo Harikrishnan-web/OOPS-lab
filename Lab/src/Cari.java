@@ -5,7 +5,7 @@ class Car {
     void stop() { System.out.println("Car stopped"); }
 }
 
-public class Main {
+public class Cari {
     public static void main(String[] args) {
         Car c = new Car("Tesla","Red");
         c.start();
