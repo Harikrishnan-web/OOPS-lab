@@ -25,19 +25,24 @@ public class Server {
     }
 }
 
-       
+// client      
 
-//Client.java
-import java.io.*;
 import java.net.*;
+import java.io.*;
 
 public class Client {
-    public static void main(String[] args) throws Exception {
-        Socket s = new Socket("localhost", 5000);
-        BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-        out.println("Hello Server");
-        System.out.println("Server: " + in.readLine());
-        s.close();
+    public static void main(String[] args) throws IOException {
+        String serverIP = "localhost";
+        int port = 9000;
+
+        Socket socket = new Socket(serverIP, port);
+        System.out.println("Connected. Sending message...");
+        
+        PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+        
+        writer.println("Hello from the minimalist Java client!");
+        
+        writer.close();
+        socket.close();
     }
 }
